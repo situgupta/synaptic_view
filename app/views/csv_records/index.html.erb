@@ -1,21 +1,41 @@
 
     <h3>Upload CSV Data</h3>
-    <%= form_tag import_csv_records_path, multipart: true do %>
-        <%= file_field_tag :file %>
-        <%= submit_tag "Upload CSV Data" %>
-    <% end %>
-
-    <%= link_to "Download CSV Data", csv_records_path(format: :csv),class: "btn btn-primary btn-lg"%>
-
+    <div class="row">
+        <div class="column">
+            <%= form_tag import_csv_records_path, multipart: true do %>
+                <%= file_field_tag :file %>
+                <%= submit_tag "Upload CSV Data" %>
+            <% end %>
+        </div>
+        <div class="column">
+            
+        <%= link_to "Download CSV Data", csv_records_path(format: :csv),class: "btn btn-primary btn-lg"%>
+        </div>
+    </div>
     <h1>Csv records</h1>
-
+    <table style="width:45%">
+    <tr>
+      <th>Date</th>
+      <th>Value</th>
+      <th>Domain Name</th>
+    </tr>
     <div id="csv_records">
     <% @csv_records.each do |csv_record| %>
-        <%= render csv_record %>
-        <p>
-        <%= link_to "Show this csv record", csv_record %>
-        </p>
-    <% end %>
+        <tr>
+            <td><%= csv_record.date %></td>
+            <td><%=csv_record.value%></td>
+            <td><%=csv_record.domain_name%></td>
+            <%#= link_to "Show this csv record", csv_record %>
+        </tr>
+        <% end %>
+    
+  </table>
+
+
+    
+         <%#= render csv_record %>
+        
+   
 
     <%= render partial: "csv_calculations" %>
 

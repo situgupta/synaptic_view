@@ -12,14 +12,9 @@ class CsvRecordsController < ApplicationController
     end
 
     def index
-        p "hereeeeee"
         @csv_records = current_user.csv_records.all
         @max = CsvRecord.max_value(@csv_records)
-        p"max-----#{@max}"
-        
-
-        p"#{@csv_records.inspect}"
-
+       
         respond_to do |format|
             format.html
             format.csv {send_data @csv_records.to_csv,
@@ -28,10 +23,21 @@ class CsvRecordsController < ApplicationController
         end
     end
 
+    def max_value
+        @csv_records = current_user.csv_records.all
+        CsvRecord.max_value(@csv_records)
+        
+    end
+
+
     def time_series
-        to_month
+        puts "*******==#{params["to-month"]}"
+        @from_month=params["from-month"]
+        @to_month=params["to-month"]
         start = Time.now.end_of_month
-        puts "*******==#{start}"
+
+        p"@from_month************#{@from_month} **** @to_month===#{@to_month}"
+        
 
     end
 

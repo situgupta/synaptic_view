@@ -1,10 +1,15 @@
-<form accept-charset="UTF-8" action="csv_records/time_series" method="post">
-  <input type="text" name="client[name]" value="Acme" />
-  <input type="text" name="client[phone]" value="12345" />
-  <input type="text" name="client[address][postcode]" value="12345" />
-  <input type="text" name="client[address][city]" value="Carrot City" />
 
-  <input type="submit" name="commit" value="Submit Post" />
+
+
+<form accept-charset="UTF-8" action="csv_records/time_series" method="post">
+<h3>Time Series Plot Monthwise</h3>
+<label for="from-month">From Month Year:</label>
+<input id="from-month" type="month" name="from-month" value="2021-01">
+
+<label for="to-month">To Month Year:</label>
+<input id="to-month" type="month" name="to-month" value="2021-01">
+
+  <input type="submit" name="commit" value="Result of Time Series" />
 </form>
 
         
