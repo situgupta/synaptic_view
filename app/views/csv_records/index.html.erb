@@ -1,0 +1,25 @@
+
+    <h3>Upload CSV Data</h3>
+    <%= form_tag import_csv_records_path, multipart: true do %>
+        <%= file_field_tag :file %>
+        <%= submit_tag "Upload CSV Data" %>
+    <% end %>
+
+    <%= link_to "Download CSV Data", csv_records_path(format: :csv),class: "btn btn-primary btn-lg"%>
+
+    <h1>Csv records</h1>
+
+    <div id="csv_records">
+    <% @csv_records.each do |csv_record| %>
+        <%= render csv_record %>
+        <p>
+        <%= link_to "Show this csv record", csv_record %>
+        </p>
+    <% end %>
+
+    <%= render partial: "csv_calculations" %>
+
+    </div>
+
+
+
